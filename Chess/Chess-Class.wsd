@@ -1,0 +1,33 @@
+@startuml Chess
+Class Chess{
+    + play()
+    + isResumed()
+}
+Chess *--> Draw
+Class Draw{
+    - squares : Coordenate[][]
+    + show()
+}
+Draw o--> Coordenate
+Draw o--> "2" Player
+Class Turn{
+    + active : int
+    + noActive : int
+    + change()
+}
+Chess *--> Turn 
+Turn --> "2" Player
+Class Player{
+    + pieces[] : Piece
+    + movePiece()
+}
+Piece *--> Coordenate
+Player --> Piece
+Class Piece{
+    + Player : Color
+    + move()
+}
+Piece <|-- King
+Piece <|-- Queen
+Piece <|-- rook
+@enduml
