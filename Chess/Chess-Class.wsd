@@ -3,20 +3,26 @@ Class Chess{
     + play()
     + isResumed()
 }
-Chess *--> Draw
-Class Draw{
-    - squares : Coordenate[][]
-    + show()
-}
-Draw o--> Coordenate
-Draw o--> "2" Player
+Chess *--> Turn 
 Class Turn{
     + active : int
     + noActive : int
     + change()
 }
-Chess *--> Turn 
 Turn --> "2" Player
+Chess *--> Board
+Class Board{
+    - squares : Square[]
+    + show()
+    - setSquares()
+    - getSquare(Coordenate) : char
+}
+Board o--> Square
+Board o--> "2" Player
+Class Square{
+    + Code
+}
+Square *--> Coordenate
 Class Player{
     + pieces[] : Piece
     + movePiece()
